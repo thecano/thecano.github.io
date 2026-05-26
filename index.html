@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary SEO Metadata -->
+  <title>VGC Damage Calculator for Pokémon Champions</title>
+  <meta name="description" content="The official damage calculator for the Pokémon Champions competitive format. Adjust Stat Points, import Showdown sets, and check Mega Evolutions.">
+  <meta name="keywords" content="VGC damage calculator, Pokémon Champions damage calculator, Champions VGC calculator, Pokémon damage calculator, Showdown set import, Mega Evolution damage calculator, Pokémon Champions stats">
+  <meta name="author" content="thecano">
+  <link rel="canonical" href="https://thecano.github.io/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thecano.github.io/">
+  <meta property="og:title" content="VGC Damage Calculator for Pokémon Champions">
+  <meta property="og:description" content="The official damage calculator for the Pokémon Champions competitive format. Adjust Stat Points, import Showdown sets, and check Mega Evolutions.">
+  <meta property="og:image" content="https://thecano.github.io/assets/icon/icon.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://thecano.github.io/">
+  <meta property="twitter:title" content="VGC Damage Calculator for Pokémon Champions">
+  <meta property="twitter:description" content="The official damage calculator for the Pokémon Champions competitive format. Adjust Stat Points, import Showdown sets, and check Mega Evolutions.">
+  <meta property="twitter:image" content="https://thecano.github.io/assets/icon/icon.png">
+
+  <!-- Stylesheet & Favicon -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/icon/icon.png">
+
+  <!-- Schema.org JSON-LD Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://thecano.github.io/#android-app",
+        "name": "Pokémon Champions Damage Calculator (Android)",
+        "operatingSystem": "Android",
+        "applicationCategory": "GameApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "124"
+        },
+        "downloadUrl": "https://play.google.com/store/apps/details?id=io.github.thecano.mobile_vgc_damage_calculator"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://thecano.github.io/#web-app",
+        "name": "Pokémon Champions Damage Calculator (Web)",
+        "applicationCategory": "GameApplication",
+        "browserRequirements": "Requires HTML5 compatible browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "url": "https://vgc-damage-calc-tool.web.app/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="#" class="logo">
+        <span class="logo-accent">Champions</span> Damage Calc
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://vgc-damage-calc-tool.web.app/" class="btn-navbar">Use Web App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="container hero-split">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        The Pokémon Champions <br>
+        <span style="color: var(--color-primary);">Damage Calculator</span>
+      </h1>
+      <p class="hero-subtitle">
+        A fast, lightweight tool built for the Champions competitive format. Compute damage rolls, configure double-targeting spreads, and toggle Mega Evolutions instantly.
+      </p>
+      <div class="cta-group">
+        <a href="https://vgc-damage-calc-tool.web.app/" class="btn btn-primary">
+          Launch Web App
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=io.github.thecano.mobile_vgc_damage_calculator" class="btn btn-secondary">
+          Download Android Version
+        </a>
+      </div>
+    </div>
+
+    <!-- Real phone screenshot mockup -->
+    <div class="phone-mockup">
+      <img src="assets/screenshots/matchup.png" alt="Pokémon Champions Damage Calculator Matchup Screen">
+    </div>
+  </header>
+
+  <!-- FEATURES SHOWCASE (ASYMMETRIC) -->
+  <section class="feature-showcase" id="features">
+    <div class="container">
+      
+      <!-- Showcase Row 1: Stat Points Engine -->
+      <div class="showcase-row">
+        <div class="showcase-content">
+          <span class="showcase-label">Calculation Engine</span>
+          <h2>Designed for Champions Stat Rules</h2>
+          <p class="showcase-desc">
+            Calculate your exact stats using the game's official formulas. Fully tailored to Pokémon Champions, the engine supports up to 32 Stat Points (SP) per single stat, with a global budget limit of 66 points across your entire build. Input your points and natural boosts, and view your true stats instantly.
+          </p>
+        </div>
+        
+        <div class="showcase-visual">
+          <div class="stat-points-list">
+            <div class="stat-item">
+              <span class="stat-label">Attack</span>
+              <div class="stat-points-display">
+                <span class="stat-point-tag">32 SP (Max)</span>
+                <span class="stat-value">197</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Speed</span>
+              <div class="stat-points-display">
+                <span class="stat-point-tag">18 SP</span>
+                <span class="stat-value">178</span>
+              </div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Defense</span>
+              <div class="stat-points-display">
+                <span class="stat-point-tag">16 SP</span>
+                <span class="stat-value">142</span>
+              </div>
+            </div>
+            <div style="text-align: right; font-size: 0.775rem; color: var(--text-light); margin-top: 4px; font-weight: 500;">
+              Total Allocated: 66 / 66 SP
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Showcase Row 2: Secondary Highlights Grid -->
+      <div class="showcase-row">
+        <div class="showcase-visual">
+          <div class="grid-features">
+            <div class="grid-feature-item">
+              <h4>Mega Evolution Support</h4>
+              <p>Instantly toggle Mega forms to view updated typing, updated base stats, and updated abilities, keeping your calculation flow fast.</p>
+            </div>
+            <div class="grid-feature-item">
+              <h4>Clipboard Showdown Import</h4>
+              <p>Copy a single Pokémon set from the Showdown builder. The calculator detects the format and automatically populates stats and moves on launch.</p>
+            </div>
+            <div class="grid-feature-item">
+              <h4>Double Targeting</h4>
+              <p>Target a single opponent with two moves from your active Pokémon slots. The tool calculates their combined rolls and displays your total KO probability.</p>
+            </div>
+            <div class="grid-feature-item">
+              <h4>Quick Benchmarks</h4>
+              <p>Bookmark specific damage calculations or defensive spreads to access them instantly when laddering or playing under tournament timers.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase-content">
+          <span class="showcase-label">Built for Play</span>
+          <h2>A Modern Interface for Fast Battles</h2>
+          <p class="showcase-desc">
+            In competitive Pokémon Champions battles, you don't have time to navigate through clunky menus or deal with laggy page refreshes. The web version is fully responsive and optimized for smaller mobile screens, while the native Android application operates entirely offline so you can calculate your plays during live regional tournaments. The interface is localized in all languages supported by the game.
+          </p>
+        </div>
+      </div>
+
+      <!-- Showcase Row 3: Offline Capability -->
+      <div class="showcase-row">
+        <div class="showcase-content">
+          <span class="showcase-label">Offline Capability</span>
+          <h2>Built for Live Tournament Play</h2>
+          <p class="showcase-desc">
+            No internet connection? No problem. The native Android version stores the entire Pokémon Champions database locally. Run calculations offline in the middle of a tournament hall or while traveling without worrying about cell coverage or battery-draining page reloads.
+          </p>
+        </div>
+        
+        <div class="phone-mockup">
+          <img src="assets/screenshots/heat_wave_damage.png" alt="Pokémon Champions Damage Calculator Heat Wave Damage Screen">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION (DOCS-STYLE) -->
+  <section class="section faq-docs" id="faq">
+    <div class="container faq-docs-container">
+      <div class="faq-docs-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Common questions about the Champions damage calculator engine.</p>
+      </div>
+      <div class="faq-docs-list">
+        
+        <div class="faq-docs-item">
+          <h3 class="faq-docs-question">How does the calculator handle Pokémon Champions stat formulas?</h3>
+          <p class="faq-docs-answer">
+            Pokémon Champions removes IVs, replacing them with direct Stat Points (max 32 per stat, 66 global cap). Our calculator applies the official formula automatically, letting you allocate SP and select natures to get 100% accurate stats.
+          </p>
+        </div>
+
+        <div class="faq-docs-item">
+          <h3 class="faq-docs-question">Does this calculator support Mega Evolution?</h3>
+          <p class="faq-docs-answer">
+            Yes. This tool fully supports Mega Evolution stats, types, and abilities, allowing you to compute damage rolls for Mega Pokémon during battle simulations.
+          </p>
+        </div>
+
+        <div class="faq-docs-item">
+          <h3 class="faq-docs-question">How do I import my Pokémon Champions sets from Showdown?</h3>
+          <p class="faq-docs-answer">
+            Simply copy the export text of a Pokémon from your Showdown team builder. When you open the calculator, the tool automatically detects the set in your clipboard and prompts you to import it in a single tap, mapping all stats, moves, item, and ability to your active slot instantly.
+          </p>
+        </div>
+
+        <div class="faq-docs-item">
+          <h3 class="faq-docs-question">Can I use this calculator on my mobile phone during games?</h3>
+          <p class="faq-docs-answer">
+            Absolutely. The web version is built with a fully responsive layout optimized for smaller screens. For the absolute best mobile experience and offline compatibility during tournament play, you can download the native Android app on Google Play.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <span>Champions</span> Damage Calc
+      </div>
+      <ul class="footer-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://vgc-damage-calc-tool.web.app/">Web App</a></li>
+        <li><a href="https://play.google.com/store/apps/details?id=io.github.thecano.mobile_vgc_damage_calculator">Android App</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        Disclaimer: This calculator is an unofficial tool and is not affiliated with, endorsed, sponsored, or specifically approved by Nintendo, Game Freak, or The Pokémon Company. Pokémon and Pokémon character names are trademarks of Nintendo.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
