@@ -1,0 +1,15 @@
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+# Specifically allow Google AdSense crawler
+User-agent: Mediapartners-Google
+Allow: /
+
+# Specifically allow Googlebot
+User-agent: Googlebot
+Allow: /
+
+# Link to the sitemap
+Sitemap: https://canolabs.dev/sitemap.xml
