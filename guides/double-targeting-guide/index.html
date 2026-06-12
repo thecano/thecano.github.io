@@ -216,16 +216,16 @@
         <h2>The Math of Double-Targeting: Convolution</h2>
         <p>
           When you target a single opponent with two attacks (Pokémon A and Pokémon B), the damage ranges combine. Mathematically, let:
-          <br>\(X\) be the random variable representing the damage rolls of Pokémon A, consisting of 16 discrete outcomes: \(a_1, a_2, \dots, a_{16}\).
-          <br>\(Y\) be the random variable representing the damage rolls of Pokémon B, consisting of 16 discrete outcomes: \(b_1, b_2, \dots, b_{16}\).
+          <br><i>X</i> be the random variable representing the damage rolls of Pokémon A, consisting of 16 discrete outcomes: <i>a</i><sub>1</sub>, <i>a</i><sub>2</sub>, ..., <i>a</i><sub>16</sub>.
+          <br><i>Y</i> be the random variable representing the damage rolls of Pokémon B, consisting of 16 discrete outcomes: <i>b</i><sub>1</sub>, <i>b</i><sub>2</sub>, ..., <i>b</i><sub>16</sub>.
         </p>
         <p>
-          Since these rolls are independent, the total damage \(Z = X + Y\) represents the sum of two independent discrete random variables. The distribution of \(Z\) is the **convolution** of the two uniform discrete distributions. This creates a grid of \(16 \times 16 = 256\) possible combined outcomes.
+          Since these rolls are independent, the total damage <i>Z</i> = <i>X</i> + <i>Y</i> represents the sum of two independent discrete random variables. The distribution of <i>Z</i> is the **convolution** of the two uniform discrete distributions. This creates a grid of 16 &times; 16 = 256 possible combined outcomes.
         </p>
         <p>
           The probability of securing the KO is calculated as:
         </p>
-        <div class="math-block">P(KO) = ( Number of combinations where (a_i + b_j) &ge; Opponent_HP ) / 256</div>
+        <div class="math-block">P(KO) = ( Number of combinations where (a<sub>i</sub> + b<sub>j</sub>) &ge; Opponent_HP ) / 256</div>
 
         <h3>Example Calculation</h3>
         <p>
@@ -237,11 +237,11 @@
           Let's map the combinations:
         </p>
         <ul>
-          <li>The absolute minimum combined damage is \(100 + 70 = 170\) (fails to KO).</li>
-          <li>The absolute maximum combined damage is \(118 + 82 = 200\) (secures the KO).</li>
+          <li>The absolute minimum combined damage is 100 + 70 = 170 (fails to KO).</li>
+          <li>The absolute maximum combined damage is 118 + 82 = 200 (secures the KO).</li>
         </ul>
         <p>
-          To find the exact probability of survival vs. KO, we must calculate the exact number of pairs \((a_i, b_j)\) where the sum is less than 180. Doing this manually in 45 seconds is impossible. 
+          To find the exact probability of survival vs. KO, we must calculate the exact number of pairs (<i>a<sub>i</sub></i>, <i>b<sub>j</sub></i>) where the sum is less than 180. Doing this manually in 45 seconds is impossible. 
         </p>
         <p>
           Our VGC Damage Calculator solves this instantly. By using our **Double Targeting** tab, the tool runs the convolution of both active slots against the target's HP spread, outputting the exact percentage (e.g., "78.13% chance to KO").
