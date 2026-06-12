@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary SEO Metadata -->
+  <title>About Us - VGC Damage Calc</title>
+  <meta name="description" content="Learn about Cano Labs and the VGC Damage Calculator for Pokémon Champions. Built by competitive players for precise calculations.">
+  <meta name="author" content="thecano">
+  <link rel="canonical" href="https://canolabs.dev/about/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://canolabs.dev/about/">
+  <meta property="og:title" content="About Us - VGC Damage Calc">
+  <meta property="og:description" content="Learn about Cano Labs and the VGC Damage Calculator for Pokémon Champions. Built by competitive players for precise calculations.">
+  <meta property="og:image" content="https://canolabs.dev/assets/icon/icon.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:url" content="https://canolabs.dev/about/">
+  <meta property="twitter:title" content="About Us - VGC Damage Calc">
+  <meta property="twitter:description" content="Learn about Cano Labs and the VGC Damage Calculator for Pokémon Champions. Built by competitive players for precise calculations.">
+  <meta property="twitter:image" content="https://canolabs.dev/assets/icon/icon.png">
+
+  <!-- Stylesheet & Favicon -->
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../assets/icon/icon.png">
+
+  <style>
+    .about-container {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    .about-content {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.025);
+    }
+    .about-content h1 {
+      font-size: 2.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+    .about-content .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1rem;
+    }
+    .about-content h2 {
+      font-size: 1.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+    .about-content p {
+      font-size: 0.975rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .about-content ul {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+    .about-content li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+      font-size: 0.975rem;
+    }
+    .about-content a {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition-fast);
+    }
+    .about-content a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .about-container {
+        margin: 2rem auto;
+      }
+      .about-content {
+        padding: 1.75rem;
+        border-radius: var(--radius-md);
+      }
+      .about-content h1 {
+        font-size: 1.8rem;
+      }
+      .about-content h2 {
+        font-size: 1.3rem;
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="../" class="logo">
+        <span class="logo-accent">Champions</span> Damage Calc
+      </a>
+      <ul class="nav-links">
+        <li><a href="../guides/">Guides</a></li>
+        <li><a href="../#features">Features</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../#about-contact">About & Contact</a></li>
+        <li><a href="https://calc.canolabs.dev/" class="btn-navbar">Use Web App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="about-container">
+    <article class="about-content">
+      <h1>About Cano Labs</h1>
+      <div class="subtitle">Built by competitive players for precise battle simulations.</div>
+
+      <p>
+        <strong>Cano Labs</strong> is an independent software studio dedicated to creating high-performance tools, utilities, and applications for competitive gaming communities. We specialize in building fast, lightweight, and mathematically accurate software that assists players in preparation, theorycrafting, and live-match decision making.
+      </p>
+
+      <h2>Our Core Mission</h2>
+      <p>
+        In competitive Pokémon VGC, battles are often decided by single-digit damage percentages or precise speed tiers. While general-purpose calculators exist, specialized formats require custom calculations. 
+      </p>
+      <p>
+        Our mission with the <strong>VGC Damage Calculator for Pokémon Champions</strong> is to provide a dedicated, optimized interface that natively supports the unique mechanics of the Champions league. Rather than manually translating stats or modifying source code, we built an engine that runs the calculations directly using the format's bespoke rules.
+      </p>
+
+      <h2>Why Pokémon Champions?</h2>
+      <p>
+        The Pokémon Champions format represents a significant shift from standard VGC rules:
+      </p>
+      <ul>
+        <li><strong>Stat Points (SP) Engine:</strong> IVs/EVs are replaced with a direct allocation of 66 Stat Points.</li>
+        <li><strong>Bespoke Limits:</strong> A cap of 32 SP per single stat ensures players make critical trade-offs between bulk and offense.</li>
+        <li><strong>Dynamic Mega Evolutions:</strong> Instant evaluation of stats, typings, and abilities for Mega-evolved forms.</li>
+      </ul>
+      <p>
+        Because these rule modifications fundamentally alter damage calculations, standard online VGC tools produce inaccurate values. Our tool solves this problem, providing 100% accurate results instantly.
+      </p>
+
+      <h2>Our Team & Technical Focus</h2>
+      <p>
+        We are a small team of software developers and active VGC players. Our combined experience guides our design principles:
+      </p>
+      <ul>
+        <li><strong>Performance First:</strong> Battle timers are short. The web and mobile apps are optimized for minimal bundle sizes and immediate load times.</li>
+        <li><strong>Offline Accessibility:</strong> Tournament halls often have poor network reception. The Android application functions entirely offline.</li>
+        <li><strong>Open & Community Driven:</strong> We regularly update our calculations to reflect mechanics updates and bug fixes reported by the community.</li>
+      </ul>
+
+      <p>
+        If you have feedback, feature requests, or partnership inquiries, please visit our <a href="../contact/">Contact Page</a> or reach out directly via email.
+      </p>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <span>Champions</span> Damage Calc
+      </div>
+      <ul class="footer-links">
+        <li><a href="../guides/">Guides</a></li>
+        <li><a href="../#features">Features</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../about/">About Us</a></li>
+        <li><a href="../contact/">Contact</a></li>
+        <li><a href="../terms/">Terms of Service</a></li>
+        <li><a href="../privacy/">Privacy Policy</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        Disclaimer: This calculator is an unofficial tool and is not affiliated with, endorsed, sponsored, or specifically approved by Nintendo, Game Freak, or The Pokémon Company. Pokémon and Pokémon character names are trademarks of Nintendo.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

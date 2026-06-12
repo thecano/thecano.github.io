@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary SEO Metadata -->
+  <title>Mega Evolution Damage: Calculation & Timing - VGC Damage Calc</title>
+  <meta name="description" content="A comprehensive mathematical analysis of Mega Evolution in the Pokémon Champions VGC format. Learn about mid-turn speed shifts, base stat increases, and ability transition mechanics.">
+  <meta name="keywords" content="Mega Evolution VGC, Mega Salamence damage calculations, Mega Metagross speed tiers, Pokémon Champions Mega Evolution, VGC speed resolution">
+  <meta name="author" content="thecano">
+  <link rel="canonical" href="https://canolabs.dev/guides/mega-evolution-guide/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://canolabs.dev/guides/mega-evolution-guide/">
+  <meta property="og:title" content="Mega Evolution Damage: Calculation & Timing - VGC Damage Calc">
+  <meta property="og:description" content="A comprehensive mathematical analysis of Mega Evolution in the Pokémon Champions VGC format. Learn about mid-turn speed shifts, base stat increases, and ability transition mechanics.">
+  <meta property="og:image" content="https://canolabs.dev/assets/icon/icon.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://canolabs.dev/guides/mega-evolution-guide/">
+  <meta property="twitter:title" content="Mega Evolution Damage: Calculation & Timing - VGC Damage Calc">
+  <meta property="twitter:description" content="A comprehensive mathematical analysis of Mega Evolution in the Pokémon Champions VGC format. Learn about mid-turn speed shifts, base stat increases, and ability transition mechanics.">
+  <meta property="twitter:image" content="https://canolabs.dev/assets/icon/icon.png">
+
+  <!-- Stylesheet & Favicon -->
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/png" href="../../assets/icon/icon.png">
+
+  <style>
+    .article-container {
+      max-width: 840px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    .article-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 4rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.025);
+    }
+    
+    .article-tag {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      font-family: var(--font-display);
+    }
+    
+    .article-card h1 {
+      font-size: 2.5rem;
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    
+    .article-meta {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.25rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .article-body h2 {
+      font-size: 1.6rem;
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+    .article-body h3 {
+      font-size: 1.2rem;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+    .article-body p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .article-body ul, .article-body ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.75rem;
+      color: var(--text-muted);
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    .article-body strong {
+      color: var(--text-main);
+    }
+    
+    .math-block {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.75rem 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    
+    .example-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.75rem 0;
+    }
+    .example-table th, .example-table td {
+      border: 1px solid var(--card-border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .example-table th {
+      background-color: var(--bg-secondary);
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+    .example-table td {
+      color: var(--text-muted);
+    }
+    
+    .note-box {
+      border-left: 4px solid var(--color-primary);
+      background-color: var(--color-primary-light);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .note-box p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 600px) {
+      .article-container {
+        margin: 2rem auto;
+      }
+      .article-card {
+        padding: 2rem 1.5rem;
+        border-radius: var(--radius-md);
+      }
+      .article-card h1 {
+        font-size: 1.9rem;
+      }
+      .article-body h2 {
+        font-size: 1.4rem;
+        margin-top: 2.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="../../" class="logo">
+        <span class="logo-accent">Champions</span> Damage Calc
+      </a>
+      <ul class="nav-links">
+        <li><a href="../../guides/">Guides</a></li>
+        <li><a href="../../#features">Features</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+        <li><a href="../../#about-contact">About & Contact</a></li>
+        <li><a href="https://calc.canolabs.dev/" class="btn-navbar">Use Web App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ARTICLE CONTENT -->
+  <main class="article-container">
+    <article class="article-card">
+      <span class="article-tag">Battle Tactics</span>
+      <h1>Mega Evolution Damage: Calculation & Timing</h1>
+      
+      <div class="article-meta">
+        <span>By Cano Labs Research</span>
+        <span>Published: June 12, 2026</span>
+        <span>10 Min Read</span>
+      </div>
+
+      <div class="article-body">
+        <p>
+          Mega Evolution is one of the most explosive and game-altering mechanics in competitive Pokémon VGC. In the <strong>Pokémon Champions</strong> format, Mega Evolution is integrated directly into the team builder, allowing players to build dynamic cores around powerhouse Megas. 
+        </p>
+        <p>
+          However, because Mega Evolution alters base stats, typings, and abilities mid-turn, calculating exact damage thresholds and optimizing execution timing is critical. Standard battle simulators fail to account for how these mid-turn transitions affect calculation order, speed tiers, and modifier stacking.
+        </p>
+
+        <h2>The Mechanics of the Mega Transition</h2>
+        <p>
+          To calculate damage during a Mega turn, you must understand the exact sequence of events that occurs when the "Mega Evolve" button is pressed. In accordance with modern competitive standards (specifically Gen 7 engine rules, which Pokémon Champions adapts):
+        </p>
+        <ol>
+          <li><strong>Speed Resolution:</strong> Speed tiers update **immediately** at the beginning of the turn, before any moves are executed. The turn order is resolved using the Mega-evolved Speed stat rather than the base Speed.</li>
+          <li><strong>Base Stat Shifts:</strong> The Pokémon’s base stats increase (generally by a flat sum of 100 points, excluding HP). Since SP points are allocated to the base stat, the stat formula recalculates using the new Base Stat.</li>
+          <li><strong>Ability Activation:</strong> The new ability takes effect immediately upon shifting. This includes entry hazards/weather (e.g., *Drizzle* from Mega Pert, *Drought* from Charizard Y) and damage modifiers (e.g., *Aerialate*, *Pixilate*, *Tough Claws*).</li>
+        </ol>
+
+        <h2>Recalculating Stats: The Mega Formula Shift</h2>
+        <p>
+          As analyzed in our Stat Points Guide, a Pokémon's non-HP stats are calculated using the formula:
+        </p>
+        <div class="math-block">Stat = Floor( (Base_Stat + SP + 20) * Nature_Modifier )</div>
+        <p>
+          When a Pokémon Mega Evolves, the base stat increases. However, the allocated SP remains fixed. This means that a nature modifier (1.1x) scales the *combined* addition of the base increase.
+        </p>
+        <p>
+          Let's analyze <strong>Mega Metagross</strong> (Base Attack 135 -> 145 on Mega Evolution) with a Jolly nature (1.0x Attack modifier) vs. an Adamant nature (1.1x Attack modifier), assuming 32 SP allocated:
+        </p>
+        
+        <table class="example-table">
+          <thead>
+            <tr>
+              <th>Form & Nature</th>
+              <th>Base Stat</th>
+              <th>SP Allocated</th>
+              <th>Raw Sum (Base + SP + 20)</th>
+              <th>Nature Multiplier</th>
+              <th>Final Attack Stat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Metagross (Jolly)</td>
+              <td>135</td>
+              <td>32 SP</td>
+              <td>187</td>
+              <td>1.0x</td>
+              <td>187</td>
+            </tr>
+            <tr>
+              <td>Mega Metagross (Jolly)</td>
+              <td>145</td>
+              <td>32 SP</td>
+              <td>197</td>
+              <td>1.0x</td>
+              <td>197 (+10 points)</td>
+            </tr>
+            <tr>
+              <td>Metagross (Adamant)</td>
+              <td>135</td>
+              <td>32 SP</td>
+              <td>187</td>
+              <td>1.1x</td>
+              <td>Floor(205.7) = 205</td>
+            </tr>
+            <tr>
+              <td>Mega Metagross (Adamant)</td>
+              <td>145</td>
+              <td>32 SP</td>
+              <td>197</td>
+              <td>1.1x</td>
+              <td>Floor(216.7) = 216 (+11 points)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Notice how the Adamant nature yields an extra +1 point gain (+11 instead of +10) upon Mega Evolution because of how the 1.1x multiplier compounds with the higher base stat. Wasting this single point can be the difference between securing a clean KO or leaving an opponent with 1% HP.
+        </p>
+
+        <h2>Mathematical Synergy of Ability Multipliers</h2>
+        <p>
+          Many Mega Evolutions gain abilities that apply a direct multiplier to damage rolls. When running these calculations, these multipliers are applied sequentially to the base power of the move or the final damage output.
+        </p>
+        <p>
+          Consider <strong>Mega Salamence</strong> with <strong>Aerilate</strong>. Aerilate converts Normal-type moves to Flying-type and applies a 1.2x damage boost. In addition, Salamence gets Same-Type Attack Bonus (STAB), which applies a 1.5x multiplier.
+        </p>
+        <p>
+          If Mega Salamence uses Double-Edge (Base Power 120):
+        </p>
+        <div class="math-block">Modified Base Power = Floor( 120 * 1.2 ) = 144
+Final Damage Multiplier = Base_Damage * 1.5 (STAB) * Other_Modifiers</div>
+        <p>
+          Because these multipliers are applied as distinct steps in the Pokémon damage engine, rounding occurs at multiple stages. Our dedicated calculator implements these exact step-by-step modifier calculations (including weather, terrain, and items like Life Orb or Choice Band) to prevent rounding errors.
+        </p>
+
+        <div class="note-box">
+          <p><strong>Warning:</strong> In Pokémon Champions, the calculation order is crucial. Weather-boosting abilities (like Mega Charizard Y's Drought) occur *before* damage is computed. If an opponent switches in a faster weather setter, the weather is overwritten, reducing your fire-type moves by 50% relative to your initial calculations.</p>
+        </div>
+
+        <h2>Strategic Timing: Keeping the Base Form</h2>
+        <p>
+          While Mega Evolving immediately is the default play, there are specific tactical scenarios where delaying your Mega Evolution is mathematically superior:
+        </p>
+        <ul>
+          <li><strong>Ability Conservation (Gyarados):</strong> Gyarados possesses *Intimidate* in its base form, which lowers the Attack stat of both opponents by 1 stage (a 0.67x damage multiplier). Gaining this reduction is often superior to Mega Evolving immediately to Mega Gyarados (which changes the ability to *Mold Breaker*). By staying in the base form, you apply the Intimidate drop first, then Mega Evolve on a subsequent turn.</li>
+          <li><strong>Defensive Typing Shifting (Charizard):</strong> Base Charizard is Fire/Flying, making it immune to Ground-type attacks (Earthquake) but 4x weak to Rock-type attacks (Rock Slide). Mega Charizard X is Fire/Dragon, losing the Ground immunity but reducing the Rock weakness to a standard 2x weakness. If you predict a Rock-type attack on turn 1, Mega Evolving immediately is mathematically safer. If you predict a Ground-type attack, delaying the Mega Evolution is superior to maintain your Flying-type immunity.</li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <span>Champions</span> Damage Calc
+      </div>
+      <ul class="footer-links">
+        <li><a href="../../guides/">Guides</a></li>
+        <li><a href="../../#features">Features</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+        <li><a href="../../about/">About Us</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../terms/">Terms of Service</a></li>
+        <li><a href="../../privacy/">Privacy Policy</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        Disclaimer: This calculator is an unofficial tool and is not affiliated with, endorsed, sponsored, or specifically approved by Nintendo, Game Freak, or The Pokémon Company. Pokémon and Pokémon character names are trademarks of Nintendo.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

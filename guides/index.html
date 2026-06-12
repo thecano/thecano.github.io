@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary SEO Metadata -->
+  <title>Competitive VGC Guides - Pokémon Champions</title>
+  <meta name="description" content="Access expert competitive guides for the Pokémon Champions format. Optimize stat allocations, calculate Mega Evolution benchmarks, and master double-targeting math.">
+  <meta name="keywords" content="VGC guides, Pokémon Champions VGC, stat points optimization, Mega Evolution damage calculations, double-targeting probability, competitive Pokémon strategy">
+  <meta name="author" content="thecano">
+  <link rel="canonical" href="https://canolabs.dev/guides/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://canolabs.dev/guides/">
+  <meta property="og:title" content="Competitive VGC Guides - Pokémon Champions">
+  <meta property="og:description" content="Access expert competitive guides for the Pokémon Champions format. Optimize stat allocations, calculate Mega Evolution benchmarks, and master double-targeting math.">
+  <meta property="og:image" content="https://canolabs.dev/assets/icon/icon.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://canolabs.dev/guides/">
+  <meta property="twitter:title" content="Competitive VGC Guides - Pokémon Champions">
+  <meta property="twitter:description" content="Access expert competitive guides for the Pokémon Champions format. Optimize stat allocations, calculate Mega Evolution benchmarks, and master double-targeting math.">
+  <meta property="twitter:image" content="https://canolabs.dev/assets/icon/icon.png">
+
+  <!-- Stylesheet & Favicon -->
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../assets/icon/icon.png">
+
+  <style>
+    .guides-hero {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--card-border);
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .guides-hero h1 {
+      font-size: 2.75rem;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+    .guides-hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .guides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2.5rem;
+      margin: 4rem auto;
+    }
+    
+    .guide-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+    }
+    .guide-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+    }
+    
+    .guide-tag {
+      display: inline-block;
+      align-self: flex-start;
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+      font-family: var(--font-display);
+    }
+    
+    .guide-card h2 {
+      font-size: 1.35rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+      line-height: 1.3;
+    }
+    
+    .guide-excerpt {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+    
+    .guide-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.25rem;
+      margin-top: auto;
+    }
+    
+    .guide-read-time {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    
+    .guide-link {
+      color: var(--color-primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: var(--transition-fast);
+    }
+    .guide-link:hover {
+      color: #1d4ed8;
+    }
+    
+    @media (max-width: 600px) {
+      .guides-hero {
+        padding: 3.5rem 0;
+      }
+      .guides-hero h1 {
+        font-size: 2rem;
+      }
+      .guides-grid {
+        grid-template-columns: 1fr;
+        margin: 2.5rem auto;
+        gap: 1.5rem;
+      }
+      .guide-card {
+        padding: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="../" class="logo">
+        <span class="logo-accent">Champions</span> Damage Calc
+      </a>
+      <ul class="nav-links">
+        <li><a href="../guides/">Guides</a></li>
+        <li><a href="../#features">Features</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../#about-contact">About & Contact</a></li>
+        <li><a href="https://calc.canolabs.dev/" class="btn-navbar">Use Web App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="guides-hero">
+    <div class="container">
+      <h1>Competitive Strategy Hub</h1>
+      <p>Deep-dive mathematical analysis, optimization mechanics, and tournament-level tactics for the Pokémon Champions competitive tier.</p>
+    </div>
+  </header>
+
+  <!-- GRID -->
+  <main class="container">
+    <div class="guides-grid">
+      
+      <!-- Card 1: Stat Points -->
+      <article class="guide-card">
+        <div>
+          <span class="guide-tag">Game Mechanics</span>
+          <h2>The 66 Stat Points Rule: Math & Optimization</h2>
+          <p class="guide-excerpt">
+            An in-depth look into the custom stat allocation system. Learn how to calculate stat returns, identify mathematical inflection points, and optimize your 66 SP budgets for maximum combat efficiency.
+          </p>
+        </div>
+        <div class="guide-meta">
+          <span class="guide-read-time">8 min read</span>
+          <a href="stat-points-guide/" class="guide-link">
+            Read Guide 
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align: middle; display: inline-block;">
+              <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2: Mega Evolution -->
+      <article class="guide-card">
+        <div>
+          <span class="guide-tag">Battle Tactics</span>
+          <h2>Mega Evolution Damage: Calculation & Timing</h2>
+          <p class="guide-excerpt">
+            Master the mathematics behind Mega Evolution. Analyze the impact of mid-turn stat shifting, ability transitions, and typing modifications on defensive and offensive calculations.
+          </p>
+        </div>
+        <div class="guide-meta">
+          <span class="guide-read-time">10 min read</span>
+          <a href="mega-evolution-guide/" class="guide-link">
+            Read Guide
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align: middle; display: inline-block;">
+              <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3: Double-Targeting -->
+      <article class="guide-card">
+        <div>
+          <span class="guide-tag">Probability & Strategy</span>
+          <h2>Mastering Double-Targeting Probability Math</h2>
+          <p class="guide-excerpt">
+            Calculate the exact KO probabilities when coordinating double-targeting moves. Explore how to compute overlapping damage rolls, account for variance, and optimize target selection under tournament pressure.
+          </p>
+        </div>
+        <div class="guide-meta">
+          <span class="guide-read-time">9 min read</span>
+          <a href="double-targeting-guide/" class="guide-link">
+            Read Guide
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align: middle; display: inline-block;">
+              <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <span>Champions</span> Damage Calc
+      </div>
+      <ul class="footer-links">
+        <li><a href="../guides/">Guides</a></li>
+        <li><a href="../#features">Features</a></li>
+        <li><a href="../#faq">FAQ</a></li>
+        <li><a href="../about/">About Us</a></li>
+        <li><a href="../contact/">Contact</a></li>
+        <li><a href="../terms/">Terms of Service</a></li>
+        <li><a href="../privacy/">Privacy Policy</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        Disclaimer: This calculator is an unofficial tool and is not affiliated with, endorsed, sponsored, or specifically approved by Nintendo, Game Freak, or The Pokémon Company. Pokémon and Pokémon character names are trademarks of Nintendo.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

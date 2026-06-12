@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <!-- Primary SEO Metadata -->
+  <title>Mastering Double-Targeting Probability Math - VGC Damage Calc</title>
+  <meta name="description" content="An analytical breakdown of double-targeting math in competitive VGC. Learn how discrete probability convolution determines combined KO percentages.">
+  <meta name="keywords" content="VGC double targeting, damage roll probability, discrete probability convolution, Pokémon damage rolls, tournament decision making VGC">
+  <meta name="author" content="thecano">
+  <link rel="canonical" href="https://canolabs.dev/guides/double-targeting-guide/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://canolabs.dev/guides/double-targeting-guide/">
+  <meta property="og:title" content="Mastering Double-Targeting Probability Math - VGC Damage Calc">
+  <meta property="og:description" content="An analytical breakdown of double-targeting math in competitive VGC. Learn how discrete probability convolution determines combined KO percentages.">
+  <meta property="og:image" content="https://canolabs.dev/assets/icon/icon.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://canolabs.dev/guides/double-targeting-guide/">
+  <meta property="twitter:title" content="Mastering Double-Targeting Probability Math - VGC Damage Calc">
+  <meta property="twitter:description" content="An analytical breakdown of double-targeting math in competitive VGC. Learn how discrete probability convolution determines combined KO percentages.">
+  <meta property="twitter:image" content="https://canolabs.dev/assets/icon/icon.png">
+
+  <!-- Stylesheet & Favicon -->
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="icon" type="image/png" href="../../assets/icon/icon.png">
+
+  <style>
+    .article-container {
+      max-width: 840px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    .article-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 4rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.025);
+    }
+    
+    .article-tag {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      font-family: var(--font-display);
+    }
+    
+    .article-card h1 {
+      font-size: 2.5rem;
+      color: var(--text-main);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    
+    .article-meta {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.25rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .article-body h2 {
+      font-size: 1.6rem;
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+    .article-body h3 {
+      font-size: 1.2rem;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+    .article-body p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .article-body ul, .article-body ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.75rem;
+      color: var(--text-muted);
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    .article-body strong {
+      color: var(--text-main);
+    }
+    
+    .math-block {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.75rem 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    
+    .example-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.75rem 0;
+    }
+    .example-table th, .example-table td {
+      border: 1px solid var(--card-border);
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .example-table th {
+      background-color: var(--bg-secondary);
+      color: var(--text-main);
+      font-family: var(--font-display);
+      font-weight: 600;
+    }
+    .example-table td {
+      color: var(--text-muted);
+    }
+    
+    .note-box {
+      border-left: 4px solid var(--color-primary);
+      background-color: var(--color-primary-light);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+    .note-box p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="../../" class="logo">
+        <span class="logo-accent">Champions</span> Damage Calc
+      </a>
+      <ul class="nav-links">
+        <li><a href="../../guides/">Guides</a></li>
+        <li><a href="../../#features">Features</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+        <li><a href="../../#about-contact">About & Contact</a></li>
+        <li><a href="https://calc.canolabs.dev/" class="btn-navbar">Use Web App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ARTICLE CONTENT -->
+  <main class="article-container">
+    <article class="article-card">
+      <span class="article-tag">Probability & Strategy</span>
+      <h1>Mastering Double-Targeting Probability Math</h1>
+      
+      <div class="article-meta">
+        <span>By Cano Labs Research</span>
+        <span>Published: June 12, 2026</span>
+        <span>9 Min Read</span>
+      </div>
+
+      <div class="article-body">
+        <p>
+          In a doubles format like Pokémon VGC, one of the most fundamental tactical options is **double-targeting**—directing attacks from both active slots into a single opposing slot. The goal is straightforward: concentrate damage to secure a Knockout (KO) on a high-value threat before it can act.
+        </p>
+        <p>
+          However, because damage calculations in Pokémon output a range of values rather than a flat number, computing the probability of a combined KO is not as simple as adding individual KO percentages. To make correct, mathematical risk evaluations under tournament pressure, players must understand the math of **discrete probability convolution**.
+        </p>
+
+        <h2>The Anatomy of a Damage Roll</h2>
+        <p>
+          Every damaging move in the Pokémon engine outputs one of **16 discrete, equally likely values**. The game calculates a "maximum damage" value based on base power, stats, and modifiers, and then multiplies this maximum by a random multiplier:
+        </p>
+        <div class="math-block">Multiplier_List = [0.85, 0.86, 0.87, 0.88, 0.89, 0.90, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1.00]</div>
+        <p>
+          Each of these 16 rolls has a probability of exactly <strong>1/16 (6.25%)</strong>. 
+          If Pokémon A attacks an opponent:
+        </p>
+        <ul>
+          <li>If the minimum roll (0.85x) kills the target, you have a <strong>100% chance</strong> to KO (a "guaranteed" KO).</li>
+          <li>If only the maximum roll (1.00x) kills the target, you have a <strong>1/16 (6.25%) chance</strong> to KO.</li>
+          <li>If rolls 9 through 16 kill the target, you have an <strong>8/16 (50.0%) chance</strong> to KO.</li>
+        </ul>
+
+        <h2>The Math of Double-Targeting: Convolution</h2>
+        <p>
+          When you target a single opponent with two attacks (Pokémon A and Pokémon B), the damage ranges combine. Mathematically, let:
+          <br>\(X\) be the random variable representing the damage rolls of Pokémon A, consisting of 16 discrete outcomes: \(a_1, a_2, \dots, a_{16}\).
+          <br>\(Y\) be the random variable representing the damage rolls of Pokémon B, consisting of 16 discrete outcomes: \(b_1, b_2, \dots, b_{16}\).
+        </p>
+        <p>
+          Since these rolls are independent, the total damage \(Z = X + Y\) represents the sum of two independent discrete random variables. The distribution of \(Z\) is the **convolution** of the two uniform discrete distributions. This creates a grid of \(16 \times 16 = 256\) possible combined outcomes.
+        </p>
+        <p>
+          The probability of securing the KO is calculated as:
+        </p>
+        <div class="math-block">P(KO) = ( Number of combinations where (a_i + b_j) &ge; Opponent_HP ) / 256</div>
+
+        <h3>Example Calculation</h3>
+        <p>
+          Suppose an opposing Pokémon has <strong>180 HP</strong> remaining.
+          <br>Our faster Pokémon A does a damage range of <strong>100 to 118</strong> (none of these rolls can KO alone).
+          <br>Our slower Pokémon B does a damage range of <strong>70 to 82</strong> (none of these rolls can KO alone).
+        </p>
+        <p>
+          Let's map the combinations:
+        </p>
+        <ul>
+          <li>The absolute minimum combined damage is \(100 + 70 = 170\) (fails to KO).</li>
+          <li>The absolute maximum combined damage is \(118 + 82 = 200\) (secures the KO).</li>
+        </ul>
+        <p>
+          To find the exact probability of survival vs. KO, we must calculate the exact number of pairs \((a_i, b_j)\) where the sum is less than 180. Doing this manually in 45 seconds is impossible. 
+        </p>
+        <p>
+          Our VGC Damage Calculator solves this instantly. By using our **Double Targeting** tab, the tool runs the convolution of both active slots against the target's HP spread, outputting the exact percentage (e.g., "78.13% chance to KO").
+        </p>
+
+        <div class="note-box">
+          <p><strong>Strategic Value:</strong> If the calculator shows a 100% combined KO chance, you have zero risk. If it shows 85%, you must evaluate if the 15% risk of survival (which could let the opponent counter-attack or heal) is acceptable, or if you should pivot to a defensive play.</p>
+        </div>
+
+        <h2>Tactical Implications: Order and Recoil</h2>
+        <p>
+          When double-targeting, the speed ordering of your active Pokémon matters due to competitive item triggers and abilities:
+        </p>
+        <ol>
+          <li><strong>Focus Sash & Sturdy:</strong> If the target holds a *Focus Sash* (which leaves the Pokémon with 1 HP if hit at full health), the faster attacker must hit first to break the Sash, allowing the slower attacker to secure the clean KO. If the order is reversed or if you only attack with one slot, the threat remains active.</li>
+          <li><strong>Pinch Berries:</strong> Opponents often carry berries that restore 33% HP when health drops below 25% (e.g., *Figy Berry*). If your faster attack drops the target into berry range, the target will heal *before* your second attack lands. Your calculator must be used to verify if the second attack's range exceeds the combined HP + berry recovery.</li>
+          <li><strong>Recoil & Hazards:</strong> If the faster attacker KOs the target, the slower attacker's move will target empty space (or the partner if not redirected). This prevents taking unnecessary Life Orb recoil or Rocky Helmet damage on your second slot.</li>
+        </ol>
+      </div>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <span>Champions</span> Damage Calc
+      </div>
+      <ul class="footer-links">
+        <li><a href="../../guides/">Guides</a></li>
+        <li><a href="../../#features">Features</a></li>
+        <li><a href="../../#faq">FAQ</a></li>
+        <li><a href="../../about/">About Us</a></li>
+        <li><a href="../../contact/">Contact</a></li>
+        <li><a href="../../terms/">Terms of Service</a></li>
+        <li><a href="../../privacy/">Privacy Policy</a></li>
+      </ul>
+      <p class="footer-disclaimer">
+        Disclaimer: This calculator is an unofficial tool and is not affiliated with, endorsed, sponsored, or specifically approved by Nintendo, Game Freak, or The Pokémon Company. Pokémon and Pokémon character names are trademarks of Nintendo.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
