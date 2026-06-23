@@ -106,14 +106,12 @@
         <a href="https://calc.canolabs.dev/" class="btn btn-primary">
           Launch Web App
         </a>
+        <a href="https://apps.apple.com/us/app/vgc-damage-calc-for-champions/id6780572378" class="btn btn-secondary">
+          Download iOS Version
+        </a>
         <a href="https://play.google.com/store/apps/details?id=io.github.thecano.mobile_vgc_damage_calculator" class="btn btn-secondary">
           Download Android Version
         </a>
-      </div>
-      <div class="ios-cta-container">
-        <p class="ios-cta-text">
-          Using iOS? <a href="#" id="open-ios-instructions" class="ios-link">Install the app on your iPhone/iPad</a>.
-        </p>
       </div>
     </div>
 
@@ -250,14 +248,14 @@
         <div class="faq-docs-item">
           <h3 class="faq-docs-question">Can I use this calculator on my mobile phone during games?</h3>
           <p class="faq-docs-answer">
-            Absolutely. The web version is built with a fully responsive layout optimized for smaller screens. For the absolute best mobile experience and offline compatibility during tournament play, you can download the native Android app on Google Play.
+            Absolutely. The web version is built with a fully responsive layout optimized for smaller screens. For the absolute best mobile experience and offline compatibility during tournament play, you can download the native apps on the iOS App Store or Google Play Store.
           </p>
         </div>
 
         <div class="faq-docs-item">
           <h3 class="faq-docs-question">Is there an iOS version of the app?</h3>
           <p class="faq-docs-answer">
-            While we don't have the app on the Apple App Store, the calculator is a fully functional web app. You can install it on your iOS device in just a few taps: open the web app in Safari, tap the Share icon (square with an up arrow), and select <strong>Add to Home Screen</strong>. It will launch as a standalone app, complete with offline capability!
+            Yes! You can download the native iOS app directly from the Apple App Store: <a href="https://apps.apple.com/us/app/vgc-damage-calc-for-champions/id6780572378" target="_blank" rel="noopener" style="color: var(--color-primary); text-decoration: underline; font-weight: 500;">VGC Damage Calc for Champions</a>. It features the complete offline calculation engine built specifically for the format's unique stat formulas and competitive rules.
           </p>
         </div>
 
@@ -327,60 +325,7 @@
     </div>
   </footer>
 
-  <!-- iOS INSTALLATION MODAL -->
-  <div id="ios-modal" class="modal-overlay">
-    <div class="modal-container">
-      <div class="modal-header">
-        <div class="modal-header-title">
-          <svg viewBox="0 0 24 24" width="24" height="24" class="modal-icon">
-            <path fill="currentColor" d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
-          </svg>
-          <h3>Install on iOS</h3>
-        </div>
-        <button id="close-ios-instructions" class="modal-close-btn" aria-label="Close modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <p class="modal-intro">Since the calculator is not in the App Store, you can install it directly to your home screen using Safari.</p>
-        
-        <div class="step-list">
-          <div class="step-item">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <strong>Open in Safari</strong>
-              <p>Launch Safari and visit the <a href="https://calc.canolabs.dev/" target="_blank">Web App</a>.</p>
-            </div>
-          </div>
-          
-          <div class="step-item">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <strong>Tap the Share Button</strong>
-              <p>Tap the Safari Share button in the toolbar (the square icon with an up arrow <span class="share-icon-inline"><svg viewBox="0 0 24 24" width="16" height="16" style="vertical-align: middle; display: inline-block; margin-top: -3px;"><path fill="currentColor" d="M16 5l-1.42 1.42L18 9.83H9v2h9l-3.42 3.42L16 16.67 21.84 10.83 16 5zm-11 11.83V9.83c0-2.21 1.79-4 4-4h2v-2H9c-3.31 0-6 2.69-6 6v7c0 3.31 2.69 6 6 6h3v-2H9c-2.21 0-4-1.79-4-4z"/></svg></span>).</p>
-            </div>
-          </div>
-          
-          <div class="step-item">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <strong>Select 'Add to Home Screen'</strong>
-              <p>Scroll down the share sheet options and tap <span style="white-space: nowrap;"><strong>Add to Home Screen</strong></span></p>
-            </div>
-          </div>
-          
-          <div class="step-item">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <strong>Add and Launch</strong>
-              <p>Name the app (or keep the default) and tap <span style="white-space: nowrap;"><strong>Add</strong></span> in the top-right corner. The app will appear on your home screen!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a href="https://calc.canolabs.dev/" class="btn btn-primary" style="width: 100%; justify-content: center;">Launch Web App in Safari</a>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Cookie Consent Banner -->
   <div id="cookie-banner" class="cookie-banner">
@@ -448,31 +393,7 @@
   </style>
 
   <script>
-    // iOS Modal Toggle Logic
-    const openBtn = document.getElementById('open-ios-instructions');
-    const closeBtn = document.getElementById('close-ios-instructions');
-    const modal = document.getElementById('ios-modal');
 
-    if (openBtn && closeBtn && modal) {
-      openBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // prevent scrolling behind modal
-      });
-
-      closeBtn.addEventListener('click', function() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-
-      // Close modal on click outside container
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          modal.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-      });
-    }
 
     // Cookie Banner Logic
     const cookieBanner = document.getElementById('cookie-banner');
