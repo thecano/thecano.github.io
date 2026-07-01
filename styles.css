@@ -219,12 +219,12 @@ p {
   display: block;
 }
 
-.store-badge-link img[alt*="App Store"] {
+.store-badge-link img.badge-apple {
   height: 40px;
 }
 
-.store-badge-link img[alt*="Google Play"] {
-  height: 46px;
+.store-badge-link img.badge-google {
+  height: 53px; /* Compensate for Google Play's 24% transparent vertical padding */
 }
 
 .btn {
