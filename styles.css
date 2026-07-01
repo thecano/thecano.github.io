@@ -197,6 +197,11 @@ p {
   width: 100%;
 }
 
+.cta-group .btn {
+  height: 50px;
+  padding: 0 1.6rem;
+}
+
 .store-badges {
   display: inline-flex;
   align-items: center;
@@ -220,11 +225,11 @@ p {
 }
 
 .store-badge-link img.badge-apple {
-  height: 40px;
+  height: 50px;
 }
 
 .store-badge-link img.badge-google {
-  height: 53px; /* Compensate for Google Play's 24% transparent vertical padding */
+  height: 74px; /* Compensate for Google Play's large transparent vertical padding to match the 50px visual height */
 }
 
 .btn {
