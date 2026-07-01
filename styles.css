@@ -192,8 +192,39 @@ p {
 .cta-group {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 1rem;
   width: 100%;
+}
+
+.store-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.store-badge-link {
+  display: inline-block;
+  line-height: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.store-badge-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.store-badge-link img {
+  width: auto;
+  display: block;
+}
+
+.store-badge-link img[alt*="App Store"] {
+  height: 40px;
+}
+
+.store-badge-link img[alt*="Google Play"] {
+  height: 46px;
 }
 
 .btn {
@@ -549,6 +580,11 @@ p {
   
   .cta-group {
     justify-content: center;
+  }
+  
+  .store-badges {
+    justify-content: center;
+    width: 100%;
   }
   
   .showcase-row,
